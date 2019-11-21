@@ -1,0 +1,113 @@
+snippet ttm "Table test map" b
+tests := map[string]struct{
+	${1:fields}
+}{
+	"${2:name}": { $3 },
+}
+for name, tt := range tests {
+	tt := tt
+	t.Run(name, func(t *testing.T) {
+		$0
+	})
+}
+endsnippet
+
+snippet tts "Table test struct" b
+tests := []struct{
+	${1:fields}
+}{
+	{ $3 },
+}
+for _, tt := range tests {
+	tt := tt
+	t.Run(fmt.Sprintf("${2:%#v}", ${3:tt}), func(t *testing.T) {
+		$0
+	})
+}
+endsnippet
+
+# pre_expand "snip.buffer[1] += 'GoImport github.com/golang/mock/gomock'"
+snippet gomock "gomock" b
+ctrl := gomock.NewController(t)
+defer ctrl.Finish()
+endsnippet
+
+snippet newmock "New mock" b
+mock$1 := mocks.NewMock$1(ctrl)
+mock$1.EXPECT().$0
+endsnippet
+
+snippet genmocks "Go generate mocks" b
+//go:generate mockgen -source $GOFILE -destination mocks/$GOFILE -package mocks
+endsnippet
+
+post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
+snippet tf "Test Fuction" b
+test$0
+endsnippet
+
+post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
+snippet tys "struct"
+st$0
+endsnippet
+
+post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
+snippet tyi "interface" w
+interface$0
+endsnippet
+
+snippet hand "HTTP Handler"
+func ${1} ${2:ServeHTTP}(w http.ResponseWriter, r *http.Request) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet il "if error, log" b
+if $1 != nil {
+	log.${2:Fatal}($1)
+}
+endsnippet
+
+snippet ni "Not implemented" b
+panic("Not implemented")
+endsnippet
+
+snippet errors "New error" w
+errors.New("$1")
+endsnippet
+
+snippet len "len" w
+len($1)
+endsnippet
+
+snippet ifnn "If x not nil" b
+if ${1:err} != nil {
+	${2:return $1}
+}
+endsnippet
+
+snippet ctxbackround "background context" w
+context.Background()
+endsnippet
+
+snippet ctxtodo "TODO context" w
+context.TODO()
+endsnippet
+
+snippet ctxcancel "context with cancel" w
+ctx, cancel := context.WithCancel($1)
+defer cancel()
+endsnippet
+
+snippet ctxtimeout "context with timeout" w
+ctx, cancel := context.WithTimeout($2, $1)
+defer cancel()
+endsnippet
+
+snippet mu "Mutex" b
+mu sync.Mutex
+endsnippet
+
+snippet murw "RWMutex" b
+mu sync.RWMutex
+endsnippet
