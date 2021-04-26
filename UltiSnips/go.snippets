@@ -1,13 +1,13 @@
 snippet ttm "Table test map" b
 tests := map[string]struct{
-	${1:fields}
+	$2
 }{
-	"${2:name}": { $3 },
+	"${3:default}": { $4 },
 }
 for name, tt := range tests {
 	tt := tt
 	t.Run(name, func(t *testing.T) {
-		$0
+		$1
 	})
 }
 endsnippet
