@@ -14,13 +14,13 @@ endsnippet
 
 snippet tts "Table test struct" b
 tests := []struct{
-	${1:fields}
+	$1
 }{
 	{ $3 },
 }
-for _, tt := range tests {
+for testNum, tt := range tests {
 	tt := tt
-	t.Run(fmt.Sprintf("${2:%#v}", ${3:tt}), func(t *testing.T) {
+	t.Run(fmt.Sprintf("#%#v", testNum), func(t *testing.T) {
 		$0
 	})
 }
