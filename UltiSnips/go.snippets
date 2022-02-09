@@ -97,7 +97,7 @@ endsnippet
 
 snippet we "Wrap error" b
 if ${2:err} != nil {
-	return fmt.Errorf("$1: %w" $2)
+	return fmt.Errorf("$1: %w", $2)
 }
 endsnippet
 
