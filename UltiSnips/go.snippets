@@ -130,3 +130,22 @@ endsnippet
 snippet todo "TODO comment" w
 // TODO $1
 endsnippet
+
+snippet flags "var (...flags)" b
+var (
+	$1
+)
+flag.Parse()
+endsnippet
+
+snippet flagbool "flag.Bool" b
+$1 = flag.Bool("$1", ${2:false}, "$3")
+endsnippet
+
+snippet flagstring "flag.String" b
+$1 = flag.String("$1", ${2:"$3"}, "$4")
+endsnippet
+
+snippet flagduration "flag.Duration" b
+$1 = flag.Duration("$1", ${2:time.$3}, "$4")
+endsnippet
