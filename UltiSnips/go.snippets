@@ -8,6 +8,7 @@ for name, tt := range tests {
 	tt := tt
 	t.Run(name, func(t *testing.T) {
 		t.Parallel()
+		t.Logf("input:\n%s", spew.Sdump(tt))
 		$1
 	})
 }
@@ -15,15 +16,16 @@ endsnippet
 
 snippet tts "Table test struct" b
 tests := []struct{
-	$1
+	$2
 }{
 	{ $3 },
 }
 for testNum, tt := range tests {
 	tt := tt
-	t.Run(fmt.Sprintf("#%#v", testNum), func(t *testing.T) {
+	t.Run(fmt.Sprintf("%d", testNum), func(t *testing.T) {
 		t.Parallel()
-		$0
+		t.Logf("input:\n%s", spew.Sdump(tt))
+		$1
 	})
 }
 endsnippet
