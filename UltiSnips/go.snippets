@@ -43,7 +43,7 @@ ctrl := gomock.NewController(t)
 endsnippet
 
 snippet newmock "New mock" b
-mock$1 := mocks.NewMock$1(ctrl)
+mock$1 := mock_${2:`go list -f '{{.Name}}'`}.NewMock$1(ctrl)
 mock$1.EXPECT().$0
 endsnippet
 
