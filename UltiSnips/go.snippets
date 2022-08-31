@@ -48,7 +48,7 @@ mock$1.EXPECT().$0
 endsnippet
 
 snippet genmocks "Go generate mocks" b
-//go:generate mockgen -destination mocks/$GOFILE -package ${GOPACKAGE}_mocks -source $GOFILE
+//go:generate mockgen -destination mocks/${GOFILE}_mocks.go . ${1:interface,...}
 endsnippet
 
 post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
