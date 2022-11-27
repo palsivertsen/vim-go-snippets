@@ -164,3 +164,17 @@ const (
 	$0
 )
 endsnippet
+
+# main()
+snippet main "func main() { ... }"
+func main() {
+	if err := run(); err != nil {
+		log.Printf("run: %s", err.Error())
+	}
+}
+
+func run() error {
+	$0
+	return nil
+}
+endsnippet
