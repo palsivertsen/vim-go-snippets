@@ -164,6 +164,11 @@ const (
 )
 endsnippet
 
+snippet ts "http test server"
+ts := httptest.NewServer(${1:handler})
+defer ts.Close()
+endsnippet
+
 # main()
 snippet main "func main() { ... }"
 func main() {
