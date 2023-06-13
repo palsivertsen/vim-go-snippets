@@ -173,7 +173,7 @@ endsnippet
 snippet main "func main() { ... }"
 func main() {
 	if err := run(); err != nil {
-		log.Printf("run: %s", err.Error())
+		log.Fatalf("run: %s", err.Error())
 	}
 }
 
