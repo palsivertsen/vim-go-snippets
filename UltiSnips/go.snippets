@@ -42,12 +42,12 @@ ctrl := gomock.NewController(t)
 endsnippet
 
 snippet newmock "New mock" b
-mock$1 := mock_${2:`go list -f '{{.Name}}'`}.NewMock$1(ctrl)
+mock$1 := ${2:`go list -f '{{.Name}}'`}mocks.NewMock$1(ctrl)
 mock$1.EXPECT().$0
 endsnippet
 
 snippet genmocks "Go generate mocks" b
-//go:generate mockgen -destination mocks_${GOFILE} -package ${GOPACKAGE} . $0
+//go:generate mockgen -destination mocks/${GOFILE} -package ${GOPACKAGE}mocks . $0
 endsnippet
 
 post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
